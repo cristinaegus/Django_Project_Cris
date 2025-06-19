@@ -1,0 +1,21 @@
+codigo_inventario,tipo_producto,marca,precio_producto,fecha_venta,disponible
+A001,Electronica,Sony,299.99,2025-06-01,1
+A002,Electrodomestico,LG,199.5,2025-06-02,1
+A003,Mueble,Ikea,89.99,2025-06-03,1
+A004,Electronica,Samsung,499.0,2025-06-04,1
+A005,Juguete,Lego,59.99,2025-06-05,1
+A006,Ropa,Nike,39.99,2025-06-06,1
+A007,Calzado,Adidas,79.99,2025-06-07,1
+A008,Electrodomestico,Bosch,149.99,2025-06-08,1
+A009,Electrónica,Apple,999.99,2025-06-09,1
+A010,Mueble,Conforama,120.0,2025-06-10,1
+A011,Juguete,Playmobil,45.0,2025-06-11,1
+A012,Ropa,Zara,25.99,2025-06-12,1
+A013,Calzado,Puma,69.99,2025-06-13,1
+A014,Electrodomestico,Philips,89.99,2025-06-14,1
+A015,Electronica,HP,350.0,2025-06-15,1
+A016,Mueble,Maison du Monde,210.0,2025-06-16,1
+A017,Juguete,Mattel,29.99,2025-06-17,1
+A018,Ropa,H&M,19.99,2025-06-18,1
+A019,Calzado,Reebok,59.99,2025-06-19,1
+A020,Electrodomestico,Siemens,179.99,2025-06-20,1
