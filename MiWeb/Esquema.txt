@@ -1,0 +1,140 @@
+DjangoCrisApp/
+│
+├── db.sqlite3                  # Base de datos principal del proyecto
+├── manage.py                   # Script para gestionar comandos de Django
+├── importar_productos.py       # Script Python para importar productos desde CSV
+├── productos.csv               # Archivo CSV con productos a importar
+│
+└── MiWeb/                      # Carpeta de la app Django principal
+    ├── __init__.py             # Indica que es un paquete Python
+    ├── admin.py                # Registro de modelos para el panel de administración
+    ├── apps.py                 # Configuración de la app
+    ├── models.py               # Definición de modelos (Producto)
+    ├── views.py                # Lógica de vistas (renderizado, formularios)
+    ├── urls.py                 # Rutas/URLs de la app
+    ├── settings.py             # Configuración global del proyecto Django
+    ├── migrations/             # Migraciones de la base de datos
+    │   ├── __init__.py
+    │   └── 0001_initial.py     # Migraciones generadas por Django
+    ├── static/                 # Archivos estáticos (CSS, JS, imágenes)
+    │   └── estilos.css         # Estilos personalizados para la app
+    └── templates/              # Plantillas HTML de la app
+        └── ejemplo.html        # Plantilla principal con formularios y tabla
+    
+    ¡Por supuesto! Aquí tienes una explicación clara de la relación y comunicación entre los archivos principales de tu proyecto Django:
+
+---
+
+### Estructura y relaciones
+
+```
+DjangoCrisApp/
+│
+├── db.sqlite3                  # Base de datos principal del proyecto
+├── manage.py                   # Script para gestionar comandos de Django
+├── importar_productos.py       # Script Python para importar productos desde CSV
+├── productos.csv               # Archivo CSV con productos a importar
+│
+└── MiWeb/                      # Carpeta de la app Django principal
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── models.py
+    ├── views.py
+    ├── urls.py
+    ├── settings.py
+    ├── migrations/
+    ├── static/
+    └── templates/
+```
+
+---
+
+### ¿Cómo se comunican y para qué sirve cada uno?
+
+- **manage.py**  
+  Es el punto de entrada para comandos de Django (iniciar servidor, migraciones, crear superusuario, etc).  
+  Ejemplo: `python manage.py runserver`
+
+- **settings.py**  
+  Configura todo el proyecto: base de datos, apps instaladas, rutas de archivos estáticos, etc.
+
+- **models.py**  
+  Define la estructura de los datos (por ejemplo, el modelo Producto).  
+  Cada modelo se traduce en una tabla de la base de datos.
+
+- **migrations/**  
+  Guarda los archivos de migración que Django usa para crear/modificar las tablas según los modelos.
+
+- **db.sqlite3**  
+  Es la base de datos real donde Django guarda los datos de los modelos.
+
+- **admin.py**  
+  Registra los modelos para que puedas gestionarlos desde el panel de administración web de Django.
+
+- **views.py**  
+  Contiene la lógica de las vistas: recibe peticiones del usuario, procesa datos, consulta modelos y devuelve respuestas (normalmente renderizando plantillas HTML).
+
+- **urls.py**  
+  Define las rutas (URLs) que responden a las peticiones del navegador y qué vista debe ejecutarse para cada una.
+
+- **ejemplo.html**  
+  Es la plantilla HTML que se renderiza y muestra al usuario. Recibe datos desde la vista (por ejemplo, la lista de productos).
+
+- **estilos.css**  
+  Archivo de estilos CSS que se aplica a las plantillas HTML para dar formato visual.
+
+- **importar_productos.py**  
+  Script que importa productos desde un archivo CSV a la base de datos usando el modelo Producto.
+
+- **productos.csv**  
+  Archivo de datos que se puede importar a la base de datos.
+
+---
+
+### Flujo de comunicación típico
+
+1. El usuario accede a una URL (por ejemplo, `/ejemplo/`).
+2. **urls.py** dirige esa URL a una función en **views.py**.
+3. **views.py** puede consultar o modificar datos usando **models.py** (que accede a **db.sqlite3**).
+4. La vista pasa los datos a una plantilla HTML en **templates/** (por ejemplo, ejemplo.html).
+5. La plantilla se muestra al usuario, usando los estilos de **estilos.css**.
+6. Si el usuario envía un formulario, la vista procesa los datos y puede guardar nuevos registros en la base de datos.
+7. **admin.py** permite gestionar los modelos desde el panel de administración web.
+
+---
+
+### Diagrama visual en Mermaid
+
+```mermaid
+flowchart TD
+    A[Usuario (Navegador)] --> B[urls.py]
+    B --> C[views.py]
+    C --> D[models.py]
+    D --> E[db.sqlite3]
+    C --> F[templates/ejemplo.html]
+    F <-- G[static/estilos.css]
+    B --> H[admin.py]
+```
+
+---
+
+# Diagrama visual de la comunicación en Django
+
+# Usuario (Navegador)
+      │
+      ▼
+[urls.py] ──► [views.py] ──► [models.py] ──► [db.sqlite3]
+      │             │
+      │             └────► [templates/ejemplo.html] ◄── [static/estilos.css]
+      │
+      └────► [admin.py] (gestión desde el panel de administración)
+
+# Explicación:
+# - El usuario accede a una URL, que pasa por urls.py.
+# - urls.py dirige la petición a una función en views.py.
+# - views.py puede consultar/guardar datos usando models.py (que accede a la base de datos).
+# - views.py renderiza una plantilla HTML (templates/ejemplo.html) y le pasa los datos.
+# - La plantilla usa estilos de static/estilos.css.
+# - admin.py permite gestionar los modelos desde el panel de administración web.
+
